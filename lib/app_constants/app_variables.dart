@@ -4,7 +4,7 @@ class AppVariables{
   static const String TEST_URI="/api/test";
   static const String GEOCODE_URI="/api/geocode-api";
 
-  static const String BASE_URI="http://localhost:8001";
+  static const String BASE_URI="http://localhost:8000";
   static const String TOKEN="";
   static const String PLACEAUTOCOMPLETE_URI="/api/place-api-autocomplete";
 

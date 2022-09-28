@@ -116,9 +116,11 @@ else{
 
     }
 
+    Future.delayed(Duration(milliseconds: 20), () {
+      update();
+    });
 
 
-    update();
   }
   int checkQuantity(int quantity){
     if(_inCartItems+quantity<0){
@@ -166,7 +168,9 @@ else{
 
       print("the id is"+value.id.toString()+"the quantity is"+value.quantity.toString());
 
-      update();
+      Future.delayed(Duration(milliseconds: 20), () {
+        update();
+      });
     });
 
 

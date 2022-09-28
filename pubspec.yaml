@@ -41,14 +41,14 @@ dependencies:
   google_maps_flutter_web:
   intl:
   flutter_google_places:
-  flutter_typeahead: 3.0.0-nullsafety.0
+#  flutter_typeahead: 3.0.0-nullsafety.0
   shimmer:
   image_picker:
-  flutterwave:
-    git:
-
-      url: https://github.com/odunboye/flutterwave-flutter.git
-      ref: development
+#  flutterwave:
+#    git:
+#
+#      url: https://github.com/odunboye/flutterwave-flutter.git
+#      ref: development
 
 
 dev_dependencies:

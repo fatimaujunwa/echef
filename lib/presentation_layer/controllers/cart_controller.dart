@@ -77,12 +77,16 @@ _items=setItems;
 
             colorText: Colors.white);
       }
-      update();
+      Future.delayed(Duration(milliseconds: 20), () {
+        update();
+      });
 
     }
 
     cartRepo.addToCartList(getItems);
-    update();
+    Future.delayed(Duration(milliseconds: 20), () {
+      update();
+    });
   }
 
   bool existInCart(Products products){
@@ -94,7 +98,9 @@ _items=setItems;
   }
   void addToCart(){
     cartRepo.addToCartList(getItems);
-    update();
+    Future.delayed(Duration(milliseconds: 20), () {
+      update();
+    });
   }
 //this whole method works for when you have already added stuff to cart
 // befire.you wanto check if it contains to list and then take the value of the previous
@@ -107,7 +113,9 @@ _items=setItems;
         if(key==products.id){
           quantity=value.quantity!;
         }});
-      update();
+      Future.delayed(Duration(milliseconds: 20), () {
+        update();
+      });
     }//this whole thing should exist only if you have already opened and clicked on add to cart
     return quantity;
   }
@@ -116,7 +124,9 @@ _items=setItems;
     _items.forEach((key, value) {
       totalQuantity+=value.quantity!;
     });
-    update();
+    Future.delayed(Duration(milliseconds: 20), () {
+      update();
+    });
     return totalQuantity;
   }
   List<CartProducts> get getItems{
@@ -133,7 +143,9 @@ _items=setItems;
       //you cant assign a null variable to a not null, you have to add ! or ?? "" at the end
       totalPrice+=value.quantity!* int.parse(value.price!);
     });
-    update();
+    Future.delayed(Duration(milliseconds: 20), () {
+      update();
+    });
     return totalPrice;
   }
 
@@ -183,7 +195,9 @@ _items=setItems;
 
     cartRepo.removeCartHistory();
 
-update();
+    Future.delayed(Duration(milliseconds: 20), () {
+      update();
+    });
   }
   Map<String, int> historyList={};
 
@@ -198,7 +212,9 @@ void addTime(){
     }
   }
 
-  update();
+  Future.delayed(Duration(milliseconds: 20), () {
+    update();
+  });
 }
   List<int> orderList(){
     return historyList.entries.map((e) {

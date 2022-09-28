@@ -1,8 +1,7 @@
 import 'dart:core';
 
 import 'package:flutter/material.dart';
-import 'package:flutterwave/core/flutterwave.dart';
-import 'package:flutterwave/models/responses/charge_response.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -194,7 +193,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {@override
                   } else {
                     var amount = controller.totalPrice;
                     print(amount);
-                    _makePayment(context, user!, amount.toString());
+                    // _makePayment(context, user!, amount.toString());
                   }
 
                   print(('amount+${controller.totalPrice + 10}'));
@@ -344,46 +343,46 @@ class _CheckOutScreenState extends State<CheckOutScreen> {@override
     );
   }
 
-  void _makePayment(BuildContext context, String email, String amount) async {
-    try {
-      Flutterwave flutterwave = Flutterwave.forUIPayment(
-          context: this.context,
-          encryptionKey: "FLWSECK_TEST174ca0c95cca",
-          publicKey: "FLWPUBK_TEST-d16184263ad0924032be8fd047a1fd55-X",
-          currency: 'NGN',
-          amount: amount,
-          email: "$email",
-          fullName: "Ujunwa Fatima",
-          txRef: _ref,
-          isDebugMode: true,
-          phoneNumber: "0123456789",
-          acceptCardPayment: selectedRadioTile == 2 ? true : false,
-          acceptUSSDPayment: false,
-          acceptAccountPayment: selectedRadioTile == 3 ? true : false,
-          acceptFrancophoneMobileMoney: false,
-          acceptGhanaPayment: false,
-          acceptMpesaPayment: false,
-          acceptRwandaMoneyPayment: true,
-          acceptUgandaPayment: false,
-          acceptZambiaPayment: false);
-
-      final ChargeResponse response =
-          await flutterwave.initializeForUiPayments();
-      if (response == null) {
-        print('Transaction failed');
-      } else {
-        if (response.status == 'success') {
-          print(response.data);
-          print(response.message);
-        } else {
-          print(response.message);
-        }
-        print(response.status);
-      }
-    } catch (error) {
-      print(error);
-    }
-  }
+  // void _makePayment(BuildContext context, String email, String amount) async {
+  //   try {
+  //     Flutterwave flutterwave = Flutterwave.forUIPayment(
+  //         context: this.context,
+  //         encryptionKey: "FLWSECK_TEST174ca0c95cca",
+  //         publicKey: "FLWPUBK_TEST-d16184263ad0924032be8fd047a1fd55-X",
+  //         currency: 'NGN',
+  //         amount: amount,
+  //         email: "$email",
+  //         fullName: "Ujunwa Fatima",
+  //         txRef: _ref,
+  //         isDebugMode: true,
+  //         phoneNumber: "0123456789",
+  //         acceptCardPayment: selectedRadioTile == 2 ? true : false,
+  //         acceptUSSDPayment: false,
+  //         acceptAccountPayment: selectedRadioTile == 3 ? true : false,
+  //         acceptFrancophoneMobileMoney: false,
+  //         acceptGhanaPayment: false,
+  //         acceptMpesaPayment: false,
+  //         acceptRwandaMoneyPayment: true,
+  //         acceptUgandaPayment: false,
+  //         acceptZambiaPayment: false);
+  //
+  //     final ChargeResponse response =
+  //         await flutterwave.initializeForUiPayments();
+  //     if (response == null) {
+  //       print('Transaction failed');
+  //     } else {
+  //       if (response.status == 'success') {
+  //         print(response.data);
+  //         print(response.message);
+  //       } else {
+  //         print(response.message);
+  //       }
+  //       print(response.status);
+  //     }
+  //   } catch (error) {
+  //     print(error);
+  //   }
+  // }
 
   Widget buildItem(RadioButtonItem item) {
     return RadioListTile(

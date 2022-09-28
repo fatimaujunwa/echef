@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
+// import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -73,89 +73,89 @@ class _UserLocationState extends State<UserLocation> {
                 style: TextDimension.style11,
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(
-                  left: Dimensions.w37,
-                  right: Dimensions.w37,
-                  top: Dimensions.h46),
-              child: Theme(
-                  data: ThemeData(hintColor: Colors.grey),
-                  child: GetBuilder<LocationController>(
-                      builder: (locationAddress) {
-                    locationController.text = '${locationAddress.pickAddress}';
-                    return TypeAheadField(
-                        textFieldConfiguration: TextFieldConfiguration(
-                            controller: locationController,
-                            textInputAction: TextInputAction.search,
-                            autofocus: true,
-                            textCapitalization: TextCapitalization.words,
-                            keyboardType: TextInputType.streetAddress,
-                            decoration: InputDecoration(
-                              hintText: 'where are you?',
-                              hintStyle: TextDimension.style14grey,
-                              border: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.black.withOpacity(0.8))),
-                              focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.black.withOpacity(0.8),
-                                      width: 2)),
-                              enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.black.withOpacity(0.8),
-                                      width: 2)),
-                            )),
-                        suggestionsCallback: (String pattern) {
-                          return Get.find<LocationController>()
-                              .searchLocation(context, pattern);
-                        },
-                        itemBuilder: (context, Prediction? suggestion) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              children: [
-                                Icon(Icons.location_on),
-                                Expanded(
-                                    child: Text(suggestion?.description ?? ""))
-                              ],
-                            ),
-                          );
-                        },
-                        onSuggestionSelected: (Prediction suggestion) {
-                          Get.find<LocationController>().setLocation(
-                              suggestion.placeId!,
-                              mapController,
-                              suggestion.description!);
-                          Get.back();
-                        });
-
-                    //   TextFormField(
-                    //   enableSuggestions: true,
-                    //
-                    //   controller: locationController,
-                    //
-                    //   decoration: InputDecoration(
-                    //
-                    //     hintText: 'Where are you?',
-                    //
-                    //     border: UnderlineInputBorder(
-                    //         borderSide: BorderSide(color: Colors.black.withOpacity(0.8))
-                    //
-                    //     ),
-                    //
-                    //     focusedBorder: UnderlineInputBorder(
-                    //         borderSide: BorderSide(color: Colors.black.withOpacity(0.8),width: 2)
-                    //
-                    //     ),
-                    //     enabledBorder: UnderlineInputBorder(
-                    //         borderSide: BorderSide(color: Colors.black.withOpacity(0.8),width: 2)
-                    //
-                    //     ),
-                    //   ),
-                    //
-                    // );
-                  })),
-            ),
+            // Container(
+            //   margin: EdgeInsets.only(
+            //       left: Dimensions.w37,
+            //       right: Dimensions.w37,
+            //       top: Dimensions.h46),
+            //   child: Theme(
+            //       data: ThemeData(hintColor: Colors.grey),
+            //       child: GetBuilder<LocationController>(
+            //           builder: (locationAddress) {
+            //         locationController.text = '${locationAddress.pickAddress}';
+            //         return TypeAheadField(
+            //             textFieldConfiguration: TextFieldConfiguration(
+            //                 controller: locationController,
+            //                 textInputAction: TextInputAction.search,
+            //                 autofocus: true,
+            //                 textCapitalization: TextCapitalization.words,
+            //                 keyboardType: TextInputType.streetAddress,
+            //                 decoration: InputDecoration(
+            //                   hintText: 'where are you?',
+            //                   hintStyle: TextDimension.style14grey,
+            //                   border: UnderlineInputBorder(
+            //                       borderSide: BorderSide(
+            //                           color: Colors.black.withOpacity(0.8))),
+            //                   focusedBorder: UnderlineInputBorder(
+            //                       borderSide: BorderSide(
+            //                           color: Colors.black.withOpacity(0.8),
+            //                           width: 2)),
+            //                   enabledBorder: UnderlineInputBorder(
+            //                       borderSide: BorderSide(
+            //                           color: Colors.black.withOpacity(0.8),
+            //                           width: 2)),
+            //                 )),
+            //             suggestionsCallback: (String pattern) {
+            //               return Get.find<LocationController>()
+            //                   .searchLocation(context, pattern);
+            //             },
+            //             itemBuilder: (context, Prediction? suggestion) {
+            //               return Padding(
+            //                 padding: const EdgeInsets.all(8.0),
+            //                 child: Row(
+            //                   children: [
+            //                     Icon(Icons.location_on),
+            //                     Expanded(
+            //                         child: Text(suggestion?.description ?? ""))
+            //                   ],
+            //                 ),
+            //               );
+            //             },
+            //             onSuggestionSelected: (Prediction suggestion) {
+            //               Get.find<LocationController>().setLocation(
+            //                   suggestion.placeId!,
+            //                   mapController,
+            //                   suggestion.description!);
+            //               Get.back();
+            //             });
+            //
+            //         //   TextFormField(
+            //         //   enableSuggestions: true,
+            //         //
+            //         //   controller: locationController,
+            //         //
+            //         //   decoration: InputDecoration(
+            //         //
+            //         //     hintText: 'Where are you?',
+            //         //
+            //         //     border: UnderlineInputBorder(
+            //         //         borderSide: BorderSide(color: Colors.black.withOpacity(0.8))
+            //         //
+            //         //     ),
+            //         //
+            //         //     focusedBorder: UnderlineInputBorder(
+            //         //         borderSide: BorderSide(color: Colors.black.withOpacity(0.8),width: 2)
+            //         //
+            //         //     ),
+            //         //     enabledBorder: UnderlineInputBorder(
+            //         //         borderSide: BorderSide(color: Colors.black.withOpacity(0.8),width: 2)
+            //         //
+            //         //     ),
+            //         //   ),
+            //         //
+            //         // );
+            //       })),
+            // ),
           ],
         ),
       ),

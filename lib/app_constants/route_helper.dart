@@ -63,7 +63,7 @@ class RouteHelper{
     GetPage(name: initial, page: (){
       return FoodScreen();
     },
-      transition: Transition.zoom,
+      transition: Transition.fadeIn,
 
 
     ),
@@ -137,7 +137,7 @@ class RouteHelper{
 
       return FavoritesPage();
     },
-        transition: Transition.leftToRightWithFade
+      transition: Transition.fadeIn,
     ),
     //
     GetPage(name: profile, page: (){
@@ -145,16 +145,20 @@ class RouteHelper{
       return ProfileScreen();
     },
 
-        transition: Transition.rightToLeftWithFade
+      transition: Transition.fadeIn,
     ),
   GetPage(name: signIn, page: (){
 
   return SignInPage();
-  }),
+  },
+    transition: Transition.fadeIn,
+  ),
 
     GetPage(name: signUp, page: (){
 
       return SignUpPage();
-    })
+    },
+      transition: Transition.fadeIn,
+    )
   ];
 }
