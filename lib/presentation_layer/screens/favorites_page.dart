@@ -27,6 +27,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
         backgroundColor: TextDimension.WhiteColor,
         endDrawer: MenuScreen(),
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           titleSpacing: 0.0,
           title: Row(
             children: [
@@ -53,7 +54,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
           ),
           backgroundColor: Colors.white,
           elevation: 0.0,
-          iconTheme: IconThemeData(color: Colors.black, size: 40),
+          // iconTheme: IconThemeData(color: Colors.black, size: 40),
         ),
         body: Padding(
           padding: const EdgeInsets.only(top: 116),

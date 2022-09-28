@@ -54,6 +54,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {@override
       backgroundColor: Colors.white,
       endDrawer: MenuScreen(),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         titleSpacing: 0.0,
         title: Row(
           children: [
@@ -73,7 +74,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {@override
         ),
         backgroundColor: Colors.white,
         elevation: 0.0,
-        iconTheme: IconThemeData(color: Colors.black, size: 40),
+        // iconTheme: IconThemeData(color: Colors.black, size: 40),
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(color: Colors.white, boxShadow: [
@@ -227,7 +228,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {@override
               children: [
 
                 Padding(
-                  padding: const EdgeInsets.only(left: 13, top: 40),
+                  padding: const EdgeInsets.only(left: 13, top: 10),
                   child: Text('Cart item' +
                       '(s): ' +
                       controller.getItems.length.toString()),
@@ -286,7 +287,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {@override
                               width: 10,
                             ),
                             Text(
-                              '01',
+                              '${controller.getItems[i].quantity}',
                               style: TextStyle(
                                 color: Colors.grey,
                                 fontSize: 12,

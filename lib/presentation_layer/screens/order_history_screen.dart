@@ -92,7 +92,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
           ),
           backgroundColor: Colors.white,
           elevation: 0.0,
-          iconTheme: IconThemeData(color: Colors.black, size: 40),
+          // iconTheme: IconThemeData(color: Colors.black, size: 40),
         ),
         body: SingleChildScrollView(
           child: Column(

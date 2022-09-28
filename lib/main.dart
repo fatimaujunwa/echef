@@ -12,6 +12,8 @@ import 'package:ifood/presentation_layer/controllers/cart_controller.dart';
 import 'package:ifood/presentation_layer/controllers/food_controller.dart';
 import 'package:ifood/presentation_layer/controllers/location_controller.dart';
 import 'package:ifood/presentation_layer/controllers/user_controller.dart';
+import 'package:ifood/presentation_layer/screens/cart_screen.dart';
+import 'package:ifood/presentation_layer/screens/check_out_screen.dart';
 import 'package:ifood/presentation_layer/screens/favorites_page.dart';
 import 'package:ifood/presentation_layer/screens/food_screen.dart';
 import 'package:ifood/presentation_layer/screens/home_page.dart';
@@ -69,11 +71,12 @@ class _MyAppState extends State<MyApp> {
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            // home:ProfileScreen(),
+            // home:CheckOutScreen(),
 
             initialRoute: RouteHelper.foodScreen,
-            getPages: RouteHelper.routes);
-      });
+            getPages: RouteHelper.routes
+          );
+         });
     });
   }
 }

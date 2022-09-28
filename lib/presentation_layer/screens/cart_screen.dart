@@ -24,6 +24,7 @@ class CartScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       endDrawer: MenuScreen(),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         titleSpacing: 0.0,
         title: Row(
           children: [
@@ -43,7 +44,7 @@ class CartScreen extends StatelessWidget {
         ),
         backgroundColor: Colors.white,
         elevation: 0.0,
-        iconTheme: IconThemeData(color: Colors.black, size: 40),
+        // iconTheme: IconThemeData(color: Colors.black, size: 40),
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(color: Colors.white, boxShadow: [
@@ -92,23 +93,26 @@ class CartScreen extends StatelessWidget {
                 Expanded(
                   child: Container(),
                 ),
-                RichText(
-                  text: TextSpan(
-                      text: '\$' + controller.totalPrice.toString(),
-                      style: TextStyle(
-                          fontSize: 26,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                      children: [
-                        TextSpan(
-                          text: '.13',
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                        )
-                      ]),
-                )
+                GetBuilder<CartController>(builder: (cartController){
+               return   RichText(
+                    text: TextSpan(
+                        text: '\$' + controller.totalPrice.toString(),
+                        style: TextStyle(
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                        children: [
+                          TextSpan(
+                            text: '.13',
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          )
+                        ]),
+                  );
+                })
+
               ],
             ),
             SizedBox(
@@ -152,7 +156,7 @@ class CartScreen extends StatelessWidget {
                   child: Container(),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 23, top: 50),
+                  padding: const EdgeInsets.only(right: 23, top: 10),
                   child: Text(
                       controller.getItems.length.toString() + '  item' + '(s)'),
                 )
@@ -215,8 +219,10 @@ class CartScreen extends StatelessWidget {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  controller.addItems(
+                                  controller.getItems[i].quantity==1?Get.snackbar('cart message', 'you cannot remove any further'):   controller.addItems(
                                       controller.getItems[i].product!, -1);
+
+
                                 },
                                 child: AppIcon(
                                   iconData: Icons.remove,
@@ -226,6 +232,8 @@ class CartScreen extends StatelessWidget {
                                 width: 10,
                               ),
                               Text(
+                               controller.getItems[i].quantity==1?'1':
+
                                 '${controller.getItems[i].quantity}',
                                 style: TextStyle(
                                   color: Colors.grey,
@@ -239,6 +247,7 @@ class CartScreen extends StatelessWidget {
                                 onTap: () {
                                   controller.addItems(
                                       controller.getItems[i].product!, 1);
+                                  print('total price'+controller.totalPrice.toString());
                                 },
                                 child: AppIcon(
                                   iconData: Icons.add,
