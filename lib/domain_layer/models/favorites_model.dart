@@ -28,7 +28,7 @@ bool? like;
         this.img,
         this.product,
         this.typeId,
-        this.like,
+        this.like=false,
       });
 
   FavoriteProducts.fromJson(Map<String, dynamic> json) {
@@ -58,5 +58,10 @@ like=json['like'];
 
       'product':this.product!.toJson(),
     };
+  }
+  @override
+  String toString() {
+    // TODO: implement toString
+    return 'Favorite is ${name},${price},${like}';
   }
 }

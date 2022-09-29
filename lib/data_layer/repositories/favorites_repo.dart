@@ -31,13 +31,20 @@ print('favorites'+sharedPreferences.getStringList('Favorite-List').toString());
 
    }
    List<FavoriteProducts>ListOfFav=[];
+   List<FavoriteProducts>newFav=[];
    fav.forEach((element) {
+
+
      ListOfFav.add(FavoriteProducts.fromJson(jsonDecode(element)));
    });
 
+ListOfFav.forEach((element) {
+  element.like=true;
+  newFav.add(element);
+});
+print('new fave'+newFav.toString());
 
-
-   return ListOfFav;
+   return newFav;
  }
 
 

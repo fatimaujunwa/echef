@@ -19,14 +19,14 @@ class FavoritesController extends GetxController{
   Map<int, bool> ?get favoriteBestDeal=>_favoriteBestDeal;
 
   Map<int, FavoriteProducts> get list=>_list;
-  bool _addToFavorites=false;
+  bool _addToFavorites=true;
 
   bool get addToFavorites=>_addToFavorites;
 void favFood(Products theproduct){
-    _addToFavorites=!_addToFavorites;
+
     update();
     if(_favoriteFood!.containsKey(theproduct.id)){
-      _favoriteFood!.update(theproduct.id!, (value) => _addToFavorites);
+      _favoriteFood!.update(theproduct.id!, (value) => !value);
     }
 
     _favoriteFood!.putIfAbsent(theproduct.id!, () => _addToFavorites);
@@ -97,6 +97,7 @@ update();
   }
   List<FavoriteProducts>getFavoriteData(){
     setFav=FavRepo.getFavorites();
+
     return favList;
   }
   set setFav(List<FavoriteProducts>items){

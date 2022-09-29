@@ -9,6 +9,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:ifood/domain_layer/models/cart_history_model.dart';
 import 'package:ifood/presentation_layer/controllers/cart_controller.dart';
+import 'package:ifood/presentation_layer/controllers/favorites_controller.dart';
 import 'package:ifood/presentation_layer/controllers/food_controller.dart';
 import 'package:ifood/presentation_layer/controllers/location_controller.dart';
 import 'package:ifood/presentation_layer/controllers/user_controller.dart';
@@ -18,7 +19,7 @@ import 'package:ifood/presentation_layer/screens/favorites_page.dart';
 import 'package:ifood/presentation_layer/screens/food_screen.dart';
 import 'package:ifood/presentation_layer/screens/home_page.dart';
 import 'package:ifood/presentation_layer/screens/location.dart';
-import 'package:ifood/presentation_layer/screens/ntisa_homescreen.dart';
+
 import 'package:ifood/presentation_layer/screens/order_history_screen.dart';
 import 'package:ifood/presentation_layer/screens/profile_screen.dart';
 import 'package:ifood/presentation_layer/screens/sign_up_page.dart';
@@ -56,6 +57,7 @@ class _MyAppState extends State<MyApp> {
     Get.find<FoodController>().getFoodCategories();
     Get.find<CartController>().getCartHistoryList();
     Get.find<LocationController>();
+    Get.find<FavoritesController>().getFavoriteData();
     // Get.find<CartController>().removeCartHistory();
   }
 
@@ -71,10 +73,10 @@ class _MyAppState extends State<MyApp> {
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            // home:CheckOutScreen(),
+            home:FavoritesPage(),
 
-            initialRoute: RouteHelper.foodScreen,
-            getPages: RouteHelper.routes
+            // initialRoute: RouteHelper.foodScreen,
+            // getPages: RouteHelper.routes
           );
          });
     });

@@ -158,7 +158,7 @@ class _FoodScreenState extends State<FoodScreen> {
             ),
             GestureDetector(
               onTap: () {
-                print('tapp');
+
               },
               child: GetBuilder<FoodController>(builder: (bestDeals) {
                 return Container(
@@ -367,8 +367,11 @@ class _FoodScreenState extends State<FoodScreen> {
                                   ),
                                   InkWell(
                                     onTap: () {
+
+
                                       favorite.favFood(
                                           foodController.foodList[index]);
+                                      print(Get.find<FavoritesController>().favoriteFood);
                                       favorite.addFavoriteItems(
                                           foodController.foodList[index]);
                                       Get.snackbar(
@@ -376,7 +379,7 @@ class _FoodScreenState extends State<FoodScreen> {
                                           colorText: Colors.white);
                                     },
                                     child: Icon(
-                                      favorite.favoriteFood![index] == true
+                                      favorite.favoriteFood![index+1] == true
                                           ? Icons.favorite
                                           : FontAwesomeIcons.heart,
                                       size: Dimensions.h20,
