@@ -58,7 +58,7 @@ class _MyAppState extends State<MyApp> {
     Get.find<CartController>().getCartHistoryList();
     Get.find<LocationController>();
     Get.find<FavoritesController>().getFavoriteData();
-    // Get.find<CartController>().removeCartHistory();
+    Get.find<LocationController>().getLocationFromSharedPreferences();
   }
 
 // This widget is the root of your application.
@@ -73,10 +73,10 @@ class _MyAppState extends State<MyApp> {
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            home:FavoritesPage(),
+            // home:FavoritesPage(),
 
-            // initialRoute: RouteHelper.foodScreen,
-            // getPages: RouteHelper.routes
+            initialRoute: RouteHelper.initial,
+            getPages: RouteHelper.routes
           );
          });
     });

@@ -1,8 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:ifood/app_constants/dimensions.dart';
 
 import '../../app_constants/reuseable_widgets/cut_out_text.dart';
+import '../../app_constants/route_helper.dart';
 import '../../app_constants/text_styles.dart';
 
 class HomePage extends StatefulWidget {
@@ -24,6 +29,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       ..forward();
     animation =
         new CurvedAnimation(parent: animationController, curve: Curves.easeIn);
+    Timer
+
+      (const Duration(seconds: 4), ()=>Get.offNamed(RouteHelper.getLocation()));
   }
 
   @override

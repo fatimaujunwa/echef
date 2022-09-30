@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:ifood/app_constants/dimensions.dart';
 import 'package:ifood/app_constants/text_styles.dart';
+import 'package:ifood/data_layer/helper/payment.dart';
 
 import '../../app_constants/app_variables.dart';
 import '../../app_constants/custom_snackbar.dart';
@@ -39,7 +40,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {@override
   var controller = Get.find<CartController>();
 
 
-  int? selectedRadioTile;
+  int selectedRadioTile=0;
   setSelectedRadioTile(var val) {
     setState(() {
       selectedRadioTile = val;
@@ -104,7 +105,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {@override
               height: 15,
             ),
             Container(
-              height: 180,
+              height: 120,
               width: 400,
               decoration: BoxDecoration(color: Dimensions.color, boxShadow: [
                 BoxShadow(
@@ -181,23 +182,33 @@ class _CheckOutScreenState extends State<CheckOutScreen> {@override
               ],
             ),
             GestureDetector(
-              onTap: () {
-                print(('amount${controller.totalPrice + 10}'));
-                Get.toNamed(RouteHelper.getCheckOut());
-                controller.addToCartHistoryList();
-                if (Get.find<UserController>().user.isEmpty) {
-                  Get.toNamed(RouteHelper.getSignin());
-                } else {
-                  var user = Get.find<UserController>().user[0].email;
-                  if (selectedRadioTile == 0) {
-                    showCustomSnackBar('Please select payment method');
-                  } else {
-                    var amount = controller.totalPrice;
-                    print(amount);
-                    // _makePayment(context, user!, amount.toString());
-                  }
+              onTap: () async {
 
-                  print(('amount+${controller.totalPrice + 10}'));
+print(selectedRadioTile);
+
+if (selectedRadioTile == 0) {
+  showCustomSnackBar('Please select payment method');
+}else if(Get.find<UserController>().user.isEmpty){
+  Get.toNamed(RouteHelper.getSignin());
+}
+else {
+  if(selectedRadioTile==2){
+    var user = Get.find<UserController>().user[0].email;
+
+    var amount = controller.totalPrice+10;
+    Payment payment = await Payment(ctx: context, price: amount, email: user!).chargeCard(controller);
+  }
+  else{
+    showCustomSnackBar('Your order has been placed');
+    controller.addToCartHistoryList();
+    Get.toNamed(RouteHelper.getCheckOut());
+
+  }
+
+
+
+
+
                 }
               },
               child: Container(
@@ -344,46 +355,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {@override
     );
   }
 
-  // void _makePayment(BuildContext context, String email, String amount) async {
-  //   try {
-  //     Flutterwave flutterwave = Flutterwave.forUIPayment(
-  //         context: this.context,
-  //         encryptionKey: "FLWSECK_TEST174ca0c95cca",
-  //         publicKey: "FLWPUBK_TEST-d16184263ad0924032be8fd047a1fd55-X",
-  //         currency: 'NGN',
-  //         amount: amount,
-  //         email: "$email",
-  //         fullName: "Ujunwa Fatima",
-  //         txRef: _ref,
-  //         isDebugMode: true,
-  //         phoneNumber: "0123456789",
-  //         acceptCardPayment: selectedRadioTile == 2 ? true : false,
-  //         acceptUSSDPayment: false,
-  //         acceptAccountPayment: selectedRadioTile == 3 ? true : false,
-  //         acceptFrancophoneMobileMoney: false,
-  //         acceptGhanaPayment: false,
-  //         acceptMpesaPayment: false,
-  //         acceptRwandaMoneyPayment: true,
-  //         acceptUgandaPayment: false,
-  //         acceptZambiaPayment: false);
-  //
-  //     final ChargeResponse response =
-  //         await flutterwave.initializeForUiPayments();
-  //     if (response == null) {
-  //       print('Transaction failed');
-  //     } else {
-  //       if (response.status == 'success') {
-  //         print(response.data);
-  //         print(response.message);
-  //       } else {
-  //         print(response.message);
-  //       }
-  //       print(response.status);
-  //     }
-  //   } catch (error) {
-  //     print(error);
-  //   }
-  // }
+
 
   Widget buildItem(RadioButtonItem item) {
     return RadioListTile(
@@ -417,11 +389,11 @@ class RadioButtonitems {
       RadioButtonItem(text: 'Pay on delivery', value: 1);
   static final payWithCreditCard =
       RadioButtonItem(text: 'Pay with credit card', value: 2);
-  static final payWithBankTransfer =
-      RadioButtonItem(text: 'Pay with bank transfer', value: 3);
+  // static final payWithBankTransfer =
+  //     RadioButtonItem(text: 'Pay with bank transfer', value: 3);
   static final all = [
     payOnDelivery,
     payWithCreditCard,
-    payWithBankTransfer,
+    // payWithBankTransfer,
   ];
 }

@@ -6,6 +6,7 @@ class AppVariables{
 
   static const String BASE_URI="http://localhost:8000";
   static const String TOKEN="";
+  static const String LOCATION="LOCATION";
   static const String PLACEAUTOCOMPLETE_URI="/api/place-api-autocomplete";
 
   static const String PLACE_DETAILS_URI="/api/place-api-details";

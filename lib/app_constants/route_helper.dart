@@ -5,6 +5,7 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 
 import 'package:ifood/presentation_layer/screens/food_categories_items.dart';
+import 'package:ifood/presentation_layer/screens/location.dart';
 
 import '../presentation_layer/screens/cart_screen.dart';
 import '../presentation_layer/screens/check_out_screen.dart';
@@ -61,7 +62,7 @@ class RouteHelper{
     // GetPage(name: initial, page: ()=>MainFoodPage()),
     // GetPage(name: popularFood, page: ()=>PopularFoodDetail()),
     GetPage(name: initial, page: (){
-      return FoodScreen();
+      return HomePage();
     },
       transition: Transition.fadeIn,
 
@@ -106,16 +107,16 @@ class RouteHelper{
 
     ),
     //
-    // GetPage(name: foodDetailPage, page: (){
-    //   var pageId=Get.parameters['pageId'];
-    //
-    //   return FoodDetailScreen(pageId: int.parse(pageId!));
-    // },
-    //   transition: Transition.zoom,
-    //
-    //
-    // ),
-    //
+    GetPage(name: location, page: (){
+
+
+      return UserLocation();
+    },
+      transition: Transition.zoom,
+
+
+    ),
+
     GetPage(name: proceed, page: (){
 
       return CheckOutScreen();
